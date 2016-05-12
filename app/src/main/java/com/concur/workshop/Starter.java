@@ -10,8 +10,8 @@ public class Starter {
         JettyServer jettyServer = null;
 
         MessageStore store = new MessageStore();
-        store.addMessage(new Message("test adsa", "Hello world!"));
-        store.addMessage(new Message("Barbucha", "foo bar bar"));
+        store.addMessage(new Message("Czechitas", "Hello world!"));
+        store.addMessage(new Message("Martina", "I have no idea what Andrej is presenting"));
 
         try {
             jettyServer = new JettyServer();
