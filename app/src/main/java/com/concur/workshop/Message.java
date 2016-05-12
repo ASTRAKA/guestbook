@@ -1,12 +1,15 @@
 package com.concur.workshop;
 
-import javax.annotation.Nonnull;
+//import javax.annotation.Nonnull;
 
 public class Message {
     private String text;
     private String nickname;
 
-    public Message(@Nonnull final String nickname, @Nonnull final String message) {
+    public Message(final String nickname, final String message) {
+        if (nickname == null || message == null) {
+            throw new IllegalArgumentException("Argument can't be null");
+        }
         this.nickname = nickname;
         this.text = message;
     }
