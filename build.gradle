@@ -1,0 +1,52 @@
+ext {
+    jettyVersion = '9.2.15.v20160210'
+    slf4jVersion = '2.4'
+    powermockVersion = '1.6.4'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'checkstyle'
+    apply plugin: 'findbugs'
+    apply plugin: 'jacoco'
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+
+    group = 'com.concur.workshop'
+    version = '0.1.0'
+
+    tasks.withType(FindBugs) {
+        reports {
+            xml.enabled = false
+            html.enabled = true
+        }
+    }
+
+    findbugs {
+        ignoreFailures = true
+    }
+
+    jacoco {
+        toolVersion = "0.7.6.201602180812"
+        reportsDir = file("$buildDir/coverageReport")
+    }
+
+
+}
+
+subprojects {
+    dependencies {
+        compile group: 'org.eclipse.jetty.aggregate', name: 'jetty-all', version: jettyVersion
+        compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: slf4jVersion
+        compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: slf4jVersion
+        compile group: 'com.google.code.findbugs', name: 'annotations', version: '3.0.1u2'
+        testCompile 'junit:junit:4.12'
+        testCompile "org.powermock:powermock-mockito-release-full:$powermockVersion"
+    }
+}
