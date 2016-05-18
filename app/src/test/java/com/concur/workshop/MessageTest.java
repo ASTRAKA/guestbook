@@ -1,5 +1,6 @@
 package com.concur.workshop;
 
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -15,19 +16,33 @@ public class MessageTest {
     @Test
     public void testNicknamePositive() {
 
-        Message message = new Message("foo", "bar");
+        String nickname = "foo";
+        Message messageInstance = new Message(nickname, "bar");
+        Assert.assertEquals("Test of nickname failed!", nickname, messageInstance.getNickname());
+
     }
 
     @Test
     public void testNicknameNegative() {
-        Message message = new Message(null, null);
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("Argument can't be null or empty");
+        Message message = new Message(null, "bar");
     }
 
     @Test
     public void testTextPositive() {
+
+        String message = "some message text";
+        Message messageInstance = new Message("foo", message);
+        Assert.assertEquals("Test of message failed!", message, messageInstance.getText());
+
     }
 
     @Test
     public void testTextNegative() {
+
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("Argument can't be null or empty");
+        Message message = new Message("foo", null);
     }
 }

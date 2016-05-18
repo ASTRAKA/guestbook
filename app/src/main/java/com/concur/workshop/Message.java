@@ -8,7 +8,7 @@ public class Message {
 
     public Message(final String nickname, final String message) {
         if (nickname == null || message == null) {
-            throw new IllegalArgumentException("Argument can't be null");
+            throw new IllegalArgumentException("Argument can't be null or empty");
         }
         this.nickname = nickname;
         this.text = message;

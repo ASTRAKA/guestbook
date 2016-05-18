@@ -46,6 +46,7 @@ subprojects {
         compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: slf4jVersion
         compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: slf4jVersion
         compile group: 'com.google.code.findbugs', name: 'annotations', version: '3.0.1u2'
+        compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.53.0'
         testCompile 'junit:junit:4.12'
         testCompile "org.powermock:powermock-mockito-release-full:$powermockVersion"
     }
